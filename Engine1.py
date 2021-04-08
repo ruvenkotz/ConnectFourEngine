@@ -7,18 +7,21 @@ class Engine1:
     def __init__(self):
         nextmove = 0
 
-    def make_a_move(self,player):
-        b = Board()
+    def choose_a_move(self, player, board):
+        b = board
         moves = b.legal_moves()
+        print(moves)
         possibilities = []
         for move in moves:
-            if b.four_in_a_row(move, player) == True:
-                print("You can win")
-            player = 1
-            if b.four_in_a_row(move, player) == True:
-                print("You're gonna lose")
-
             possibilities.append(move[1])
+            if b.four_in_a_row(move[1], player) == True:
+               return move[1]
+
+        for move in moves:
+            if b.four_in_a_row(move[1], player-1) == True:
+               print(move[1])
+               return move[1]
+
         return random.choice(possibilities)
 
 

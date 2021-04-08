@@ -21,21 +21,27 @@ if __name__ == '__main__':
         b.print()
         print()
         print()
-        if player == 1:
-            new_move = input("Make a move: (1-7)")
-            move = int(new_move) - 1
-            b.make_a_move(move, player)
-            if(b.four_in_a_row(move,player) == True):
-                print("PLayer 1 wins")
-                break;
-            player = 2
-        else:
-            new_move = opp.make_a_move(player)
-            b.make_a_move(int(new_move) - 1, player)
-            if (b.four_in_a_row(int(new_move), player) == True):
-                print("PLayer 2 wins")
-                break;
-            player = 1
+
+        #Player 1 Moves
+        new_move = input("Make a move: (1-7)")
+        move_col = int(new_move) - 1
+        moves = b.legal_moves()
+        if b.four_in_a_row(move_col,player) == True :
+            print("Player 1 wins")
+            b.print()
+            break;
+        b.make_a_move(move_col, player)
+        player = 2
+
+        #Player 2 Moves
+        new_move = opp.choose_a_move(player, b)
+        moves = b.legal_moves()
+        if b.four_in_a_row(new_move, player) == True :
+            print("Player 2 wins")
+            b.print()
+            break;
+        b.make_a_move(new_move, player)
+        player = 1
 
 
 

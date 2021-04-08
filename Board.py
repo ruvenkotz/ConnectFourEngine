@@ -35,12 +35,23 @@ class Board:
             if col == move:
                 self.arr[row][col] = player
                 new_move = (row,col)
-                if self.four_in_a_row(new_move, player) == True:
-                    print("You win")
+              #  if self.four_in_a_row(new_move, player) == True:
+              #      print("You win")
 
+    def find_move(self, move_col, legal_moves ):
+        for mov in legal_moves:
+            #print(mov[1])
+            print(move_col)
+            if mov[1] == move_col:
+                return mov
 
     # Checks if the most recent move makes a four in a row
-    def four_in_a_row(self, move, player):
+    def four_in_a_row(self, move_col, player):
+        possible_moves = self.legal_moves()
+        move = (-1, -1)
+        for m in possible_moves:
+            if m[1] == move_col:
+                move = m
         row = move[0]
         col = move[1]
         depth = 1
