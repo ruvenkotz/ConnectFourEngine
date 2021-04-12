@@ -5,6 +5,7 @@
 from Board import Board
 from GUI import draw_board
 from Engine1 import Engine1
+import EngineVsEngine
 
 
 def print_hi(name):
@@ -15,11 +16,11 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     b = Board()
-    player = 1
-    opp = Engine1()
-
+    # player = 1
+    # opp = Engine1()
+    EngineVsEngine.play_games(10000)
     # Player 1 Moves
-    draw_board(b)
+    #draw_board(b)
 
     # print(b.legal_moves())
 
