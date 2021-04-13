@@ -18,9 +18,9 @@ if __name__ == '__main__':
     b = Board()
     # player = 1
     # opp = Engine1()
-    EngineVsEngine.play_games(10000)
+    #EngineVsEngine.play_games(10000)
     # Player 1 Moves
-    #draw_board(b)
+    draw_board(b)
 
     # print(b.legal_moves())
 

@@ -32,7 +32,9 @@ def four_in_a_row(board, row, col , player):
     depth = 1
     r = row
     c = col
-    while r != 0 and board[r - 1][c] == player:
+
+    #Checking downward
+    while r != 0 and board[r - 1][c] == player :
         r = r - 1
         depth = depth + 1
         if depth == 4:
@@ -40,6 +42,8 @@ def four_in_a_row(board, row, col , player):
     depth = 1
     r = row
     c = col
+
+    #Checking upward
     while r != 5 and board[r + 1][c] == player:
         r = r + 1
         depth = depth + 1
@@ -48,7 +52,9 @@ def four_in_a_row(board, row, col , player):
     depth = 1
     r = row
     c = col
-    while c != 0 and board[r][c - 1] == player:
+
+    #Checking to the left
+    while c != 0 and board[r][c - 1] == player or (depth == 3 and c <=3 and board[r][c+3] == player):
         c = c - 1
         depth = depth + 1
         if depth == 4:
@@ -56,7 +62,9 @@ def four_in_a_row(board, row, col , player):
     depth = 1
     r = row
     c = col
-    while c != 6 and board[r][c + 1] == player:
+
+    #Checking to the right
+    while c != 6 and board[r][c + 1] == player or (depth == 3 and c >=3 and board[r][c-3] == player):
         c = c + 1
         depth = depth + 1
         if depth == 4:
@@ -64,7 +72,9 @@ def four_in_a_row(board, row, col , player):
     depth = 1
     r = row
     c = col
-    while r != 0 and c != 0 and board[r - 1][c - 1] == player:
+
+    #Checking diagonally down and to the left
+    while r != 0 and c != 0 and board[r - 1][c - 1] == player or (depth == 3 and r <= 2 and c <=3 and board[r+3][c+3] == player):
         r = r - 1
         c = c - 1
         depth = depth + 1
@@ -73,7 +83,9 @@ def four_in_a_row(board, row, col , player):
     depth = 1
     r = row
     c = col
-    while r != 5 and c != 0 and board[r + 1][c - 1] == player:
+
+    #Checking diagonally up and to the left
+    while r != 5 and c != 0 and board[r + 1][c - 1] == player or (depth == 3 and r >= 3 and c <=3 and board[r-3][c+3] == player):
         r = r + 1
         c = c - 1
         depth = depth + 1
@@ -82,7 +94,9 @@ def four_in_a_row(board, row, col , player):
     depth = 1
     r = row
     c = col
-    while r != 0 and c != 6 and board[r - 1][c + 1] == player:
+
+    #Checking diagonally down and to the right
+    while r != 0 and c != 6 and board[r - 1][c + 1] == player or (depth == 3 and r <= 2  and c >=3  and board[r+3][c-3] == player):
         r = r - 1
         c = c + 1
         depth = depth + 1
@@ -91,10 +105,14 @@ def four_in_a_row(board, row, col , player):
     depth = 1
     r = row
     c = col
-    while r != 5 and c != 6 and board[r + 1][c + 1] == player:
+
+    #Checking diagonally up and to the right
+    while r != 5 and c != 6 and board[r + 1][c + 1] == player or (depth == 3 and r >= 3 and c >=3 and board[r-3][c-3] == player):
         r = r + 1
         c = c + 1
         depth = depth + 1
         if depth == 4:
             return True
+
+
     return False
