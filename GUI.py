@@ -2,6 +2,8 @@ import numpy as np
 import pygame
 import sys
 from Engine1 import Engine1
+from Engine2 import Engine2
+
 import BoardFunctions
 
 BLUE = (0, 0, 200)
@@ -15,7 +17,7 @@ height = SQUARE * 7
 RADIUS = int(SQUARE / 2 - 5)
 pygame.init()
 screen = pygame.display.set_mode((width, height))
-opp = Engine1()
+opp = Engine2()
 
 
 def drop(col, ply, board):
