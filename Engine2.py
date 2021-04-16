@@ -15,31 +15,51 @@ class Engine2:
         possibilities = []
 
         threes = 0
+        twos = 0
+        ones = 0
         # for r in range(0,5):
         #     for c in range(0,6):
         #         if b[r][c] == player:
         #             threes += HeuristicFunctions.in_a_rows(b, r, c, player, 3)
         # print(threes)
 
+        #Checks for instant win
         for move in moves:
             if BoardFunctions.four_in_a_row(b, move[0], move[1], player):
                return move
 
         #print()
+        #Checks for instant loss
         for move in moves:
             if BoardFunctions.four_in_a_row(b, move[0], move[1], 0-player):
                return move
 
+        #Adds moves and scores to a list
         for move in moves:
             board_copy = copy.deepcopy(b)
             board_copy[move[0]][move[1]] = player
             threes += HeuristicFunctions.in_a_rows(board_copy, player, 3)
-            print(str(move[1]) + " " + str(threes))
+            threes -= HeuristicFunctions.in_a_rows(board_copy, 0 - player, 3)
+            twos += HeuristicFunctions.in_a_rows(board_copy, player, 2)
+            twos -= HeuristicFunctions.in_a_rows(board_copy, 0 - player, 2)
+            ones += HeuristicFunctions.in_a_rows(board_copy, player, 1)
+            ones -= HeuristicFunctions.in_a_rows(board_copy, 0 - player, 1)
+            totalscore = 3*threes + 2*twos + 1*ones
+            print(totalscore)
             threes = 0
-            possibilities.append(move)
+            twos = 0
+            ones = 0
+            possibilities.append((move, totalscore))
+
+        #Picks out the move with the highest score
+        best_move = ((0,0), 0)
+        for pos in possibilities:
+            if pos[1] > best_move[1]:
+                best_move = pos
 
 
-        return random.choice(possibilities)
+
+        return best_move[0]
 
 
 
