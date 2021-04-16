@@ -14,6 +14,15 @@ def legal_moves(board):
     return moves
 
 
+def moves_played(board):
+    moves = 0
+    for row in range(0, 6):
+        for col in range(0, 7):
+            if board[row][col] == 1:
+                moves += 1
+    return moves
+
+
 # Makes a move. Places 1 on the board if it's player 1, -1 if it's player Two.
 # Precondition: Must be a legal move
 def make_a_move(board, move, player):

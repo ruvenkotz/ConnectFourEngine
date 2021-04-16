@@ -24,7 +24,6 @@ class Engine1:
         for move in moves:
             possibilities.append(move)
 
-        print()
         return random.choice(possibilities)
 
 
