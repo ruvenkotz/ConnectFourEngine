@@ -4,7 +4,8 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 from Board import Board
 from GUI import draw_board
-from Engine1 import Engine1
+
+
 import EngineVsEngine
 
 
@@ -17,10 +18,9 @@ def print_hi(name):
 if __name__ == '__main__':
     b = Board()
     # player = 1
-    # opp = Engine1()
-    #EngineVsEngine.play_games(1000)
+    EngineVsEngine.play_games(100)
     # Player 1 Moves
-    draw_board(b)
+    #draw_board(b)
 
     # print(b.legal_moves())
 

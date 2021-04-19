@@ -16,7 +16,7 @@ class Engine2:
         possibilities = []
 
         random_move = Engine1()
-        random_testing = False
+        random_testing = True
         num_of_random_moves = 3
         moves_played = BoardFunctions.moves_played(b)
 
@@ -38,7 +38,7 @@ class Engine2:
 
         #Random moves in the opening
         if random_testing and moves_played < num_of_random_moves:
-            rand_move = random_move.choose_a_move(1, b)
+            rand_move = random_move.choose_a_move(player, b)
             best_move = (rand_move, 100000)
 
         #Adds moves and scores to a list

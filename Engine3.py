@@ -11,7 +11,18 @@ class Engine3:
 
 
     def choose_a_move(self, player, b):
+        random_move = Engine1()
+        random_testing = True
+        num_of_random_moves = 3
+        moves_played = BoardFunctions.moves_played(b)
+        if random_testing and moves_played < num_of_random_moves:
+            return random_move.choose_a_move(player, b)
+
+
         return self.minimax(player,b)
+
+
+
 
     def minimax(self, player, b):
         move_value = self.max_value(player, b)
@@ -20,7 +31,6 @@ class Engine3:
     def max_value(self, player, b):
         moves = BoardFunctions.legal_moves(b)
         best_move = ((0,0), -100001)
-        move_value = 0
         for move in moves:
             if BoardFunctions.four_in_a_row(b, move[0], move[1], player):
                 return move
@@ -30,15 +40,14 @@ class Engine3:
             if move_value[1] > best_move[1]:
                 best_move = (move, move_value[1])
 
-        print(best_move[1])
         return best_move[0]
 
     def min_value(self, player, b):
         moves = BoardFunctions.legal_moves(b)
         best_move = ((0,0), 100001)
         for move in moves:
-            if BoardFunctions.four_in_a_row(b, move[0], move[1], 1-player):
-                return move
+            if BoardFunctions.four_in_a_row(b, move[0], move[1], 0-player):
+                return (move, -100000)
             board_copy = copy.deepcopy(b)
             board_copy[move[0]][move[1]] = 0 - player
             move_value = self.get_value(player, board_copy, move)

@@ -19,7 +19,7 @@ height = SQUARE * 7
 RADIUS = int(SQUARE / 2 - 5)
 pygame.init()
 screen = pygame.display.set_mode((width, height))
-opp = Engine3()
+opp = Engine2()
 
 
 def drop(col, ply, board):

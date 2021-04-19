@@ -1,5 +1,6 @@
 from Engine1 import Engine1
 from Engine2 import Engine2
+from Engine3 import Engine3
 from Board import Board
 import BoardFunctions
 
@@ -7,7 +8,7 @@ import BoardFunctions
 def play_games(n):
     moves_played = 0
     player1 = Engine2()
-    player2 = Engine2()
+    player2 = Engine3()
     player_1_wins = 0
     player_2_wins = 0
     drawn_games = 0
