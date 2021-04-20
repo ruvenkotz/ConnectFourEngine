@@ -16,7 +16,7 @@ class Engine2:
         possibilities = []
 
         random_move = Engine1()
-        random_testing = True
+        random_testing = False
         num_of_random_moves = 3
         moves_played = BoardFunctions.moves_played(b)
 

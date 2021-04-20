@@ -7,7 +7,7 @@ import BoardFunctions
 
 def play_games(n):
     moves_played = 0
-    player1 = Engine2()
+    player1 = Engine3()
     player2 = Engine3()
     player_1_wins = 0
     player_2_wins = 0
@@ -33,6 +33,8 @@ def play_games(n):
                     drawn_games += 1
 
             moves_played+=1
+        if i % 100 == 0:
+            print(i)
 
     print("Player 1 won: " + str(player_1_wins) + " games")
     print("Player 2 won: " + str(player_2_wins) + " games")

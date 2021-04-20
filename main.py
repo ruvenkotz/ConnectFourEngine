@@ -18,9 +18,9 @@ def print_hi(name):
 if __name__ == '__main__':
     b = Board()
     # player = 1
-    EngineVsEngine.play_games(100)
+    #EngineVsEngine.play_games(500)
     # Player 1 Moves
-    #draw_board(b)
+    draw_board(b)
 
     # print(b.legal_moves())
 
