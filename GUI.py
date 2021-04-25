@@ -81,7 +81,8 @@ def draw_board(board):
                     color = RED
 
         pygame.display.update()
-
+    while GAME_OVER:
+        move = 1
 
 
 

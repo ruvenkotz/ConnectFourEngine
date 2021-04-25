@@ -12,7 +12,7 @@ class Engine3:
 
     def choose_a_move(self, player, b):
         random_move = Engine1()
-        random_testing = True
+        random_testing = False
         num_of_random_moves = 3
         moves_played = BoardFunctions.moves_played(b)
         if random_testing and moves_played < num_of_random_moves:
