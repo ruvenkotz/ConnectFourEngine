@@ -87,7 +87,8 @@ def draw_board(board):
                 except:
                     pass
         pygame.display.update()
-
+    while GAME_OVER:
+        move = 1
 
 
 
