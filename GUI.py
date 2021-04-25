@@ -8,6 +8,7 @@ from Engine4 import Engine4
 
 
 import BoardFunctions
+from Engine5 import Engine5
 
 BLUE = (0, 0, 200)
 BLACK = (0, 0, 0)
@@ -20,7 +21,7 @@ height = SQUARE * 7
 RADIUS = int(SQUARE / 2 - 5)
 pygame.init()
 screen = pygame.display.set_mode((width, height))
-opp = Engine4()
+opp = Engine5()
 
 
 def drop(col, ply, board):
@@ -65,21 +66,26 @@ def draw_board(board):
                     col = tup[1]
                     row = drop(col, ply, board)
 
-                move = (row, col)
-                pygame.draw.circle(screen, color,
-                                   (int(col * SQUARE + SQUARE / 2), int((row) * SQUARE + SQUARE + SQUARE / 2)),
-                                   RADIUS)
+                #move = (row, col)
+                try:
+                    pygame.draw.circle(screen, color,
+                                       (int(col * SQUARE + SQUARE / 2), int((row) * SQUARE + SQUARE + SQUARE / 2)),
+                                       RADIUS)
 
-                if BoardFunctions.four_in_a_row(board.get_board(), row, col, ply):
-                    print("Player " + str(ply) + " wins")
-                    GAME_OVER = True
 
-                ply = 0 - ply
-                if color == RED:
-                    color = YELLOW
-                else:
-                    color = RED
+                    if BoardFunctions.four_in_a_row2(board.get_board(), row, col, ply):
+                        print("Player " + str(ply) + " wins")
+                        GAME_OVER = True
 
+
+
+                    ply = 0 - ply
+                    if color == RED:
+                        color = YELLOW
+                    else:
+                        color = RED
+                except:
+                    pass
         pygame.display.update()
 
 

@@ -1,14 +1,15 @@
 from Engine1 import Engine1
 from Engine2 import Engine2
 from Engine3 import Engine3
+from Engine5 import Engine5
 from Board import Board
 import BoardFunctions
 
 
 def play_games(n):
     moves_played = 0
-    player1 = Engine3()
-    player2 = Engine3()
+    player1 = Engine5()
+    player2 = Engine5()
     player_1_wins = 0
     player_2_wins = 0
     drawn_games = 0
@@ -23,14 +24,17 @@ def play_games(n):
                 player_1_wins += 1
 
             if game_not_over:
+                if BoardFunctions.legal_moves(b.get_board()) == []:
+                    game_not_over = False
+                    drawn_games += 1
+                    break
                 move_2 = player2.choose_a_move(-1, b.get_board())
+                print(move_2)
                 b.set_board(move_2[0], move_2[1], -1)
                 if BoardFunctions.four_in_a_row(b.get_board(), move_2[0], move_2[1], -1):
                     game_not_over = False
                     player_2_wins += 1
-                elif b.get_moves_played() == 42:
-                    game_not_over = False
-                    drawn_games += 1
+
 
             moves_played+=1
         if i % 100 == 0:
